@@ -1,12 +1,22 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { BookOpen, Rocket, GitPullRequest, Globe, ChevronRight } from 'lucide-react';
 
 // Fix: Cast motion to any to bypass environment-specific type errors for motion props
 const Motion = motion as any;
 
 const WhatWeDo: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Card entrance animations
+  const yTransform = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const scaleTransform = useTransform(scrollYProgress, [0, 1], [0.9, 1.1]);
+  
   const activities = [
     {
       title: "Learn",
@@ -35,7 +45,14 @@ const WhatWeDo: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <Motion.section 
+      ref={containerRef}
+      className="py-24 px-6 relative overflow-hidden"
+      style={{
+        y: yTransform,
+        scale: scaleTransform
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Motion.h2 
@@ -79,7 +96,7 @@ const WhatWeDo: React.FC = () => {
           ))}
         </div>
       </div>
-    </section>
+    </Motion.section>
   );
 };
 

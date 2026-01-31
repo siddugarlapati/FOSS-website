@@ -33,12 +33,22 @@ const Footer: React.FC = () => {
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-6">Community</h4>
+          <h4 className="text-white font-bold mb-6">Contact Us</h4>
           <ul className="space-y-4 text-neutral-500">
-            <li><a href="#" className="hover:text-yellow-400 transition-colors">Documentation</a></li>
-            <li><a href="#" className="hover:text-yellow-400 transition-colors">Code of Conduct</a></li>
-            <li><a href="#" className="hover:text-yellow-400 transition-colors">Newsletter</a></li>
-            <li><a href="#" className="hover:text-yellow-400 transition-colors">Sponsorships</a></li>
+            <li>
+              <a 
+                href="https://chat.whatsapp.com/IipGdNeCoy01MhQAO2he4b" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-yellow-400 transition-colors flex items-center gap-2"
+              >
+                <MessageSquare size={16} />
+                WhatsApp
+              </a>
+            </li>
+            <li><a href="mailto:auglug@annauniv.edu" className="hover:text-yellow-400 transition-colors">Email Us</a></li>
+            <li><a href="#" className="hover:text-yellow-400 transition-colors">Signal Group</a></li>
+            <li><a href="#" className="hover:text-yellow-400 transition-colors">GitHub Issues</a></li>
           </ul>
         </div>
 
@@ -47,7 +57,6 @@ const Footer: React.FC = () => {
           <ul className="space-y-4 text-neutral-500">
             <li><a href="#" className="hover:text-yellow-400 transition-colors">Linux Distro Guide</a></li>
             <li><a href="#" className="hover:text-yellow-400 transition-colors">Git Workshop</a></li>
-            <li><a href="#" className="hover:text-yellow-400 transition-colors">Rust Tutorials</a></li>
             <li><a href="#" className="hover:text-yellow-400 transition-colors">Open Roles</a></li>
           </ul>
         </div>

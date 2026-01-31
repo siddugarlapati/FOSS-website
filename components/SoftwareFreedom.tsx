@@ -1,11 +1,21 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Code2, Search, Share2, Wrench } from 'lucide-react';
 
 const Motion = motion as any;
 
 const SoftwareFreedom: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Parallax effect for the section
+  const yTransform = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  
   const freedoms = [
     {
       num: "0",
@@ -34,7 +44,14 @@ const SoftwareFreedom: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 px-6 relative bg-[#050505]">
+    <Motion.section 
+      ref={containerRef}
+      className="py-32 px-6 relative bg-[#050505]"
+      style={{
+        y: yTransform,
+        opacity: opacityTransform
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-20">
           <div className="lg:col-span-1">
@@ -50,7 +67,7 @@ const SoftwareFreedom: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-5xl font-black text-white mb-8 leading-tight"
             >
-              Software should <br /> be <span className="text-yellow-400 italic">unshackled.</span>
+              Freedom grows with <br /> <span className="text-yellow-400 italic">open software.</span>
             </Motion.h2>
             <Motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -59,9 +76,6 @@ const SoftwareFreedom: React.FC = () => {
             >
               Richard Stallman established these principles to protect our digital sovereignty. At AUGLUG, we live by them every day.
             </Motion.p>
-            <button className="px-6 py-3 border border-neutral-800 text-neutral-400 rounded-full hover:bg-white hover:text-black transition-all font-bold text-sm">
-              READ THE FSF MANIFESTO
-            </button>
           </div>
 
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-900 border border-neutral-900 rounded-3xl overflow-hidden shadow-2xl">
@@ -93,7 +107,7 @@ const SoftwareFreedom: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </Motion.section>
   );
 };
 

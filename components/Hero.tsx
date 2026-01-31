@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'framer-motion';
 import { ChevronRight, ShieldCheck, Folder, Terminal, Chrome, Code, Settings, Wifi, Volume2, Battery } from 'lucide-react';
 
 const Motion = motion as any;
@@ -10,24 +10,38 @@ const Hero: React.FC = () => {
     target: containerRef,
     offset: ["start start", "end start"]
   });
+  
+  // Apple-style sophisticated scroll transforms
+  const yTransform = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const scaleTransform = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
+  const rotateTransform = useTransform(scrollYProgress, [0, 1], [0, -3]);
+  
+  // Ultra-smooth Apple springs
+  const smoothY = useSpring(yTransform, { stiffness: 700, damping: 85 });
+  const smoothScale = useSpring(scaleTransform, { stiffness: 700, damping: 85 });
+  const smoothOpacity = useSpring(opacityTransform, { stiffness: 700, damping: 85 });
 
   const [screenIndex, setScreenIndex] = React.useState(0);
   const [showFileManager, setShowFileManager] = React.useState(true);
+  const [autoResetEnabled, setAutoResetEnabled] = React.useState(true);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setScreenIndex(prev => (prev + 1) % 4);
-      setShowFileManager(true); // Reset file manager when switching distros
+      if (autoResetEnabled) {
+        setShowFileManager(true); // Reset file manager when switching distros
+      }
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [autoResetEnabled]);
 
   const screens = [
     { 
       name: "Ubuntu", 
       color: "#E95420", 
       text: "Humanity to others",
-      wallpaper: "https://images.unsplash.com/photo-1557683316-973673baf926?w=1920&q=80",
+      wallpaper: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Ubuntu_25.10_default_desktop_-_English.png",
       gradient: "from-orange-600/30 via-purple-900/20 to-black/50",
       accentColor: "bg-orange-500"
     },
@@ -35,7 +49,7 @@ const Hero: React.FC = () => {
       name: "Arch Linux", 
       color: "#1793D1", 
       text: "Keep it simple",
-      wallpaper: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1920&q=80",
+      wallpaper: "https://arkapravo.in/ark-artworks/blue_arch_nowatermark.png",
       gradient: "from-blue-600/30 via-cyan-900/20 to-black/50",
       accentColor: "bg-blue-500"
     },
@@ -57,8 +71,8 @@ const Hero: React.FC = () => {
     }
   ];
 
-  const handleJoinSignal = () => {
-    window.location.href = "https://signal.group/#CjQKIOzI6_Y9_Y3zV8vP...";
+  const handleJoinWhatsApp = () => {
+    window.location.href = "https://chat.whatsapp.com/IipGdNeCoy01MhQAO2he4b";
   };
 
   return (
@@ -86,8 +100,8 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.9] mb-10 text-white"
           >
-            SOFTWARE SHOULD BE <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-white to-emerald-400">UNSHACKLED.</span>
+            FREEDOM GROWS WITH <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-white to-emerald-400">OPEN SOFTWARE.</span>
           </Motion.h1>
 
           <Motion.div
@@ -97,14 +111,11 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <button
-              onClick={handleJoinSignal}
+              onClick={handleJoinWhatsApp}
               className="group px-8 py-4 bg-yellow-400 text-black font-black text-lg rounded-full hover:scale-105 active:scale-95 transition-all flex items-center gap-3 shadow-[0_0_40px_rgba(241,196,15,0.2)]"
             >
-              JOIN VIA SIGNAL <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              JOIN VIA WHATSAPP <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <a href="#about" className="px-8 py-4 border border-neutral-800 text-neutral-400 font-bold text-lg rounded-full hover:bg-neutral-900 hover:text-white transition-all">
-              ./read_manifesto
-            </a>
           </Motion.div>
         </div>
 
@@ -231,36 +242,41 @@ const Hero: React.FC = () => {
                     </AnimatePresence>
 
                     {/* FILE MANAGER WINDOW (Background) */}
-                    <Motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="absolute top-8 left-8 w-64 bg-neutral-900/90 backdrop-blur-xl rounded-lg border border-white/20 shadow-xl overflow-hidden z-20"
-                    >
-                      <div className="h-7 bg-neutral-800/90 border-b border-white/10 flex items-center justify-between px-2">
-                        <div className="flex gap-1.5">
-                          <div className="w-2 h-2 rounded-full bg-red-500/80" />
-                          <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                          <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                    <AnimatePresence mode="wait">
+                      {showFileManager && (
+                        <Motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute top-8 left-8 w-64 bg-neutral-900/90 backdrop-blur-xl rounded-lg border border-white/20 shadow-xl overflow-hidden z-20"
+                        >
+                        <div className="h-7 bg-neutral-800/90 border-b border-white/10 flex items-center justify-between px-2">
+                          <div className="flex gap-1.5">
+                            <div className="w-2 h-2 rounded-full bg-red-500/80 hover:bg-red-600 transition-colors cursor-pointer" onClick={() => {setAutoResetEnabled(false); setShowFileManager(false);}} />
+                            <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                            <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                          </div>
+                          <span className="text-white/60 text-[9px]">Files</span>
+                          <div className="w-8" />
                         </div>
-                        <span className="text-white/60 text-[9px]">Files</span>
-                        <div className="w-8" />
-                      </div>
-                      <div className="p-2 space-y-1 text-[9px] text-white/80">
-                        <div className="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded">
-                          <Folder size={12} />
-                          <span>Projects</span>
+                        <div className="p-2 space-y-1 text-[9px] text-white/80">
+                          <div className="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded">
+                            <Folder size={12} />
+                            <span>Projects</span>
+                          </div>
+                          <div className="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded">
+                            <Folder size={12} />
+                            <span>Documents</span>
+                          </div>
+                          <div className="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded">
+                            <Folder size={12} />
+                            <span>Downloads</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded">
-                          <Folder size={12} />
-                          <span>Documents</span>
-                        </div>
-                        <div className="flex items-center gap-2 p-1.5 hover:bg-white/10 rounded">
-                          <Folder size={12} />
-                          <span>Downloads</span>
-                        </div>
-                      </div>
-                    </Motion.div>
+                      </Motion.div>
+                    )}
+                  </AnimatePresence>
 
                   </div>
 
@@ -279,7 +295,17 @@ const Hero: React.FC = () => {
                       <div className="w-10 h-10 rounded-xl bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-white/80 hover:text-white transition-all cursor-pointer hover:scale-110">
                         <Terminal size={20} />
                       </div>
-                      <div className="w-10 h-10 rounded-xl bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-white/80 hover:text-white transition-all cursor-pointer hover:scale-110">
+                      <div 
+                        className="w-10 h-10 rounded-xl bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-white/80 hover:text-white transition-all cursor-pointer hover:scale-110"
+                        onClick={() => {
+                          if (!showFileManager) {
+                            setAutoResetEnabled(true); // Re-enable auto-reset when opening manually
+                          } else {
+                            setAutoResetEnabled(false); // Disable auto-reset when closing manually
+                          }
+                          setShowFileManager(!showFileManager)
+                        }}
+                      >
                         <Folder size={20} />
                       </div>
                       <div className="w-px h-8 bg-white/20" />
