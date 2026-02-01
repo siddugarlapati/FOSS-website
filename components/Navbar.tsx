@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Github, Menu, X } from 'lucide-react';
+import { Terminal, GitBranch, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
@@ -58,8 +58,8 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="w-px h-4 bg-white/10" />
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white">
-              <Github size={18} />
+            <a href="https://gitlab.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white">
+              <GitBranch size={18} />
             </a>
             <Link to="/join" className="bg-white text-black px-4 py-1.5 rounded-full text-xs font-bold hover:bg-yellow-400 transition-colors">
               Join
@@ -96,8 +96,8 @@ const Navbar: React.FC = () => {
               ))}
               <div className="h-px bg-white/10 my-2" />
               <div className="flex items-center justify-between">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 flex items-center gap-2">
-                  <Github size={18} /> GitHub
+                <a href="https://gitlab.com/dharun-web/au-glug-website" target="_blank" rel="noopener noreferrer" className="text-neutral-400 flex items-center gap-2">
+                  <GitBranch size={18} /> GitLab
                 </a>
                 <Link to="/join" className="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-bold" onClick={() => setIsOpen(false)}>
                   Join Now
