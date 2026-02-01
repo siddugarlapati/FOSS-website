@@ -88,73 +88,123 @@ const Navbar: React.FC = () => {
           {/* Left Navigation Items - Optimized for speed */}
           <div className="flex items-center space-x-4">
             {navLinks.slice(0, 3).map((link) => (
-              <div
+              <motion.div
                 key={link.name}
-                className="relative px-6 py-3 rounded-xl cursor-pointer hover:bg-yellow-400/10 transition-all duration-150 group"
+                className="relative px-6 py-3 rounded-xl cursor-pointer transition-all duration-300 group"
                 onMouseEnter={() => setHoveredItem(link.name)}
                 onMouseLeave={() => setHoveredItem(null)}
                 onClick={() => handleNavigation(link.href)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
               >
                 <span 
-                  className="text-white font-medium text-base tracking-wide block"
-                  style={getHoverTransform(link.name)}
+                  className={`font-medium text-base tracking-wide block transition-all duration-200 ${hoveredItem === link.name ? 'text-yellow-400' : 'text-white'}`}
                 >
                   {link.name}
                 </span>
                 
-                {/* Simplified underline indicator */}
-                <div
-                  className={`absolute bottom-2 left-1/2 w-0 h-0.5 bg-yellow-400 rounded-full transition-all duration-200 ${
-                    hoveredItem === link.name ? 'w-4/5 left-[10%]' : ''
-                  }`}
+                {/* Enhanced glow effect */}
+                {hoveredItem === link.name && (
+                  <motion.div
+                    className="absolute inset-0 rounded-xl bg-yellow-400/20 blur-md -z-10"
+                    layoutId="navbarGlow"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                )}
+                
+                {/* Pop-on underline indicator */}
+                <motion.div
+                  className="absolute bottom-2 left-1/2 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full"
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ 
+                    width: hoveredItem === link.name ? '80%' : 0,
+                    opacity: hoveredItem === link.name ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Center Logo - Ultra-fast */}
-          <div 
-            className="flex-shrink-0 mx-12 cursor-pointer hover:scale-105 transition-transform duration-150"
+          {/* Center Logo - Enhanced Animation */}
+          <motion.div 
+            className="flex-shrink-0 mx-12 cursor-pointer transition-transform duration-300"
             onClick={() => handleNavigation('/')}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
           >
             <LogoIcon />
-          </div>
+          </motion.div>
 
           {/* Right Navigation Items - Optimized for speed */}
           <div className="flex items-center space-x-4">
             {navLinks.slice(3).map((link) => (
-              <div
+              <motion.div
                 key={link.name}
-                className="relative px-6 py-3 rounded-xl cursor-pointer hover:bg-yellow-400/10 transition-all duration-150 group"
+                className="relative px-6 py-3 rounded-xl cursor-pointer transition-all duration-300 group"
                 onMouseEnter={() => setHoveredItem(link.name)}
                 onMouseLeave={() => setHoveredItem(null)}
                 onClick={() => handleNavigation(link.href)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.15 }}
               >
                 <span 
-                  className="text-white font-medium text-base tracking-wide block"
-                  style={getHoverTransform(link.name)}
+                  className={`font-medium text-base tracking-wide block transition-all duration-200 ${hoveredItem === link.name ? 'text-yellow-400' : 'text-white'}`}
                 >
                   {link.name}
                 </span>
                 
-                {/* Simplified underline indicator */}
-                <div
-                  className={`absolute bottom-2 left-1/2 w-0 h-0.5 bg-yellow-400 rounded-full transition-all duration-200 ${
-                    hoveredItem === link.name ? 'w-4/5 left-[10%]' : ''
-                  }`}
+                {/* Enhanced glow effect */}
+                {hoveredItem === link.name && (
+                  <motion.div
+                    className="absolute inset-0 rounded-xl bg-yellow-400/20 blur-md -z-10"
+                    layoutId="navbarGlow"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                )}
+                
+                {/* Pop-on underline indicator */}
+                <motion.div
+                  className="absolute bottom-2 left-1/2 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full"
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ 
+                    width: hoveredItem === link.name ? '80%' : 0,
+                    opacity: hoveredItem === link.name ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 />
-              </div>
+              </motion.div>
             ))}
             
-            {/* GitHub Icon - Fast and simple */}
-            <a
+            {/* GitHub Icon - Enhanced animation */}
+            <motion.a
               href="https://github.com/AU-GLUG"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl text-white hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-150 hover:scale-110"
+              className="p-3 rounded-xl text-white transition-all duration-300 hover:scale-110"
+              whileHover={{ scale: 1.1, color: "#f1c40f" }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
             >
               <Github size={24} />
-            </a>
+            </motion.a>
           </div>
         </div>
 
@@ -164,12 +214,19 @@ const Navbar: React.FC = () => {
             <LogoIcon />
           </Link>
           
-          <button 
+          <motion.button 
             onClick={() => setIsOpen(!isOpen)}
-            className="p-3 rounded-xl text-white hover:bg-white/10 transition-colors"
+            className="p-3 rounded-xl text-white transition-colors"
+            whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+            whileTap={{ scale: 0.9 }}
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </motion.div>
+          </motion.button>
         </div>
 
         {/* Mobile Menu - Ultra-fast */}
@@ -177,13 +234,18 @@ const Navbar: React.FC = () => {
           <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/10 animate-slideDown">
             <div className="py-6 space-y-3 px-6">
               {navLinks.map((link) => (
-                <div
+                <motion.div
                   key={link.name}
-                  className="px-6 py-4 rounded-xl hover:bg-yellow-400/10 transition-all duration-150 cursor-pointer hover:translate-x-3"
+                  className="px-6 py-4 rounded-xl transition-all duration-300 cursor-pointer"
                   onClick={() => handleNavigation(link.href)}
+                  whileHover={{ x: 10, backgroundColor: "rgba(241, 196, 15, 0.1)" }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <span className="block text-white font-medium text-lg">{link.name}</span>
-                </div>
+                  <span className="block text-white font-medium text-lg transition-colors duration-200">{link.name}</span>
+                </motion.div>
               ))}
             </div>
           </div>
