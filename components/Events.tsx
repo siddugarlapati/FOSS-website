@@ -16,7 +16,7 @@ const Events: React.FC = () => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
   
   const handleEventClick = () => {
-    window.location.href = "https://signal.group/#CjQKIOzI6_Y9_Y3zV8vP...";
+    window.location.href = "https://www.linkedin.com/posts/auglug_free-open-source-drive-au-glug-au-glug-activity-7423664526690267136-Nomy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFFpiMIB0j2KJEH8h3J38gRmHyeRGwTzymM";
   };
 
   return (
@@ -62,13 +62,13 @@ const Events: React.FC = () => {
                   className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 p-8 rounded-2xl hover:border-yellow-400/30 transition-all hover:bg-neutral-900 relative"
                 >
                   <div className="flex items-center gap-3 mb-4 text-xs font-mono font-bold">
-                    <span className="text-yellow-400">JAN 23-24</span>
+                    <span className="text-yellow-400">OCT 26</span>
                     <span className="w-1 h-1 rounded-full bg-neutral-700" />
                     <span className="text-gray-400">COMPLETED</span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">Linux Installation Fest v1</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">Join us for a hands-on Linux installation workshop! We'll help students install and explore various Linux distributions. Perfect for beginners and enthusiasts alike.</p>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">FOSS Summit v1</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed">Join us for the Free and Open Source Software Summit! Learn about FOSS philosophy, contribute to projects, and connect with the community. Perfect for beginners and enthusiasts alike.</p>
 
                 </div>
               </div>
@@ -94,13 +94,13 @@ const Events: React.FC = () => {
                   className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 p-8 rounded-2xl hover:border-emerald-400/30 transition-all hover:bg-neutral-900 relative"
                 >
                   <div className="flex items-center gap-3 mb-4 text-xs font-mono font-bold">
-                    <span className="text-emerald-400">FEB 11-12</span>
+                    <span className="text-emerald-400">MAR 15-16</span>
                     <span className="w-1 h-1 rounded-full bg-neutral-700" />
                     <span className="text-emerald-400">UPCOMING</span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">FOSS Summit</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">Join us for the annual Free and Open Source Software Summit! Come learn, share, and collaborate with fellow developers and enthusiasts.</p>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">FOSS Summit v2</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed">Join us for the upcoming FOSS Summit v2! Continue learning about Free and Open Source Software, collaborate on projects, and engage with the community.</p>
                 </div>
               </div>
             </Motion.div>
