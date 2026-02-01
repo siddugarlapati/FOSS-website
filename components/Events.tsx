@@ -67,7 +67,7 @@ const Events: React.FC = () => {
                     <span className="text-gray-400">COMPLETED</span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">Linux Installation Fest v2</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">Linux Installation Fest v1</h3>
                   <p className="text-neutral-400 text-sm leading-relaxed">Join us for a hands-on Linux installation workshop! We'll help students install and explore various Linux distributions. Perfect for beginners and enthusiasts alike.</p>
 
                 </div>
