@@ -62,13 +62,13 @@ const Events: React.FC = () => {
                   className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 p-8 rounded-2xl hover:border-yellow-400/30 transition-all hover:bg-neutral-900 relative"
                 >
                   <div className="flex items-center gap-3 mb-4 text-xs font-mono font-bold">
-                    <span className="text-yellow-400">OCT 26</span>
+                    <span className="text-yellow-400">JAN 23-24</span>
                     <span className="w-1 h-1 rounded-full bg-neutral-700" />
                     <span className="text-gray-400">COMPLETED</span>
                   </div>
 
                   <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">FOSS Summit v1</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">Join us for the Free and Open Source Software Summit! Learn about FOSS philosophy, contribute to projects, and connect with the community. Perfect for beginners and enthusiasts alike.</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">AU-GLUG took a small but meaningful step toward a larger idea — helping people see open source not just as software, but as freedom, choice, and transparency. On 23rd and 24th January, our stall became a space for curiosity, conversations, and hands-on learning. Students, participants, and faculty members alike took their first steps into Linux — installing distributions such as Ubuntu, Debian, Mint, and Manjaro, and exploring open alternatives like F-Droid, Zen, GIMP, Libre Office, Open Models from OLLAMA. What stood out most was the enthusiasm around discussions on privacy, performance, customization, and long-term learning. The faculty interactions, thoughtful conversations, and multiple successful Linux installations made this drive especially meaningful.</p>
 
                 </div>
               </div>
