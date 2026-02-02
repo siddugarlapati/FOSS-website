@@ -4,9 +4,7 @@
 This document outlines all the changes made to the AU-GLUG website project, comparing the initial state with the current implementation.
 
 ## Project Overview
-**Repository**: https://gitlab.com/dharun-web/au-glug-website.git  
-**Branch**: dev  
-**Project**: AU GNU/Linux User Group Website  
+**Repository**: https://gitlab.com/au-glug/au-glug-website.git  
 **Purpose**: FOSS advocacy and community building platform
 
 ## Major Changes Implemented
@@ -22,7 +20,8 @@ This document outlines all the changes made to the AU-GLUG website project, comp
 - Created animated gradient underlines that appear on hover
 - Enhanced mobile menu with slide-in animations
 - Added entrance animations with opacity and position transitions
-- Improved GitHub icon with color change animation
+- Replaced GitHub icon with GitLab icon in the navigation bar
+- Updated navigation links to point to GitLab instead of GitHub
 
 **Technical Details**:
 - Used Framer Motion for all animations
@@ -73,14 +72,27 @@ This document outlines all the changes made to the AU-GLUG website project, comp
 
 **Features Implemented**:
 - Brand identity with AU/AUGLUG logo
-- Social media links (GitHub, WhatsApp, Twitter, Mail)
+- Social media links (GitLab, WhatsApp, Twitter, Mail)
 - Contact information section
 - Resources section with useful links
 - Copyright information with copyleft notice
 - Animated heart icon in footer text
 - Responsive grid layout
 
-### 5. Project Structure Components
+### 5. About Section Enhancement
+**Files Modified**: `components/AboutAUGLUG.tsx`, `components/AboutFOSS.tsx`
+
+**Features Added**:
+- Detailed AU GLUG organization information
+- Vision and mission statements
+- What We Do section highlighting core activities
+- Values section showcasing community principles
+- Updated statistics: 100+ members, 4 projects, 500+ commits, 1000+ internships
+- Internship information mentioning ViswamAI collaboration
+- Enhanced "Why Join AU GLUG?" section with updated benefits
+- Changed to "Join our thriving community at Anurag University"
+
+### 6. Project Structure Components
 **Files Added**: Multiple component files
 - `components/AboutAUGLUG.tsx`
 - `components/AboutFOSS.tsx`
@@ -95,7 +107,7 @@ This document outlines all the changes made to the AU-GLUG website project, comp
 - `components/ToolComparison.tsx`
 - `components/WhatWeDo.tsx`
 
-### 6. Code Quality Improvements
+### 7. Code Quality Improvements
 **Files Modified**: Various component files
 
 **Enhancements Made**:
@@ -114,6 +126,7 @@ This document outlines all the changes made to the AU-GLUG website project, comp
 - **Routing**: React Router DOM 6.30.3
 - **Build Tool**: Vite 6.2.0
 - **Icons**: Lucide React 0.454.0
+- **Carousel**: Swiper 12.1.0
 
 ## Removed Components
 ### PenguinAnimation Component
@@ -125,17 +138,13 @@ This document outlines all the changes made to the AU-GLUG website project, comp
 **Branch Strategy**: 
 - `main` - Production/stable code
 - `dev` - Development branch with latest features
+- `dev-2-dharun` - Dharun's development branch with about page updates
 - `feature-updates` - Feature branch (merged into dev)
-
-**Recent Commits**:
-1. `0174eb8` - Remove non-working PenguinAnimation component
-2. `db592f5` - Enhanced navigation animations and UI improvements
-3. `c4f3fc7` - Added projects component, enhanced navbar, updated events and footer
 
 ## Deployment Status
 - **Development Server**: Running on http://localhost:3000/
-- **Remote Repository**: https://gitlab.com/dharun-web/au-glug-website
-- **Branch Status**: dev branch active with all changes committed
+- **Remote Repository**: https://gitlab.com/au-glug/au-glug-website
+- **Branch Status**: All development branches merged into main
 
 ## Future Improvements
 - Additional page implementations
@@ -145,5 +154,5 @@ This document outlines all the changes made to the AU-GLUG website project, comp
 - Additional animation refinements
 
 ---
-*Last Updated: February 1, 2026*  
+*Last Updated: February 2, 2026*  
 *Maintained by: AU-GLUG Development Team*

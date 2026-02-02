@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Terminal, Github, Menu, X } from 'lucide-react';
+import { Terminal, GitBranch, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
@@ -191,9 +191,9 @@ const Navbar: React.FC = () => {
               </motion.div>
             ))}
             
-            {/* GitHub Icon - Enhanced animation */}
+            {/* GitLab Icon - Enhanced animation */}
             <motion.a
-              href="https://github.com/AU-GLUG"
+              href="https://gitlab.com/au-glug/au-glug-website"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-xl text-white transition-all duration-300 hover:scale-110"
@@ -203,7 +203,7 @@ const Navbar: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              <Github size={24} />
+              <GitBranch size={24} />
             </motion.a>
           </div>
         </div>
