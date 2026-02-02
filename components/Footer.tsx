@@ -36,9 +36,9 @@ const Footer: React.FC = () => {
           <h4 className="text-white font-bold mb-6">Contact Us</h4>
           <ul className="space-y-4 text-neutral-500">
             <li>
-              <a 
-                href="https://chat.whatsapp.com/IipGdNeCoy01MhQAO2he4b" 
-                target="_blank" 
+              <a
+                href="https://chat.whatsapp.com/IipGdNeCoy01MhQAO2he4b"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-yellow-400 transition-colors flex items-center gap-2"
               >
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             </li>
             <li><a href="mailto:auglug@annauniv.edu" className="hover:text-yellow-400 transition-colors">Email Us</a></li>
             <li><a href="#" className="hover:text-yellow-400 transition-colors">Signal Group</a></li>
-            <li><a href="#" className="hover:text-yellow-400 transition-colors">GitHub Issues</a></li>
+            <li><a href="#" className="hover:text-yellow-400 transition-colors">GitLab Issues</a></li>
           </ul>
         </div>
 
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
           <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" />
           <span className="w-2 h-4 bg-neutral-700 animate-pulse ml-1" />
         </div>
-        
+
         <p className="text-neutral-600 text-xs font-mono">
           &copy; {currentYear} AUGLUG. COPYLEFT — SHARE ALIKE.
         </p>

@@ -6,7 +6,7 @@ Thank you for your interest in contributing to the AU GLUG (Anurag University GN
 
 Before you begin contributing, please ensure you have:
 
-- A GitHub or GitLab account
+- A GitLab account
 - Git installed on your local machine
 - Node.js (v18.x or later) and npm installed
 - Basic understanding of React, TypeScript, and modern web development
@@ -20,8 +20,6 @@ Fork the repository by clicking the "Fork" button on the top right corner of the
 ### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/au-glug-website.git
-# or if using GitLab
 git clone https://gitlab.com/YOUR_USERNAME/au-glug-website.git
 cd au-glug-website
 ```
@@ -29,8 +27,6 @@ cd au-glug-website
 ### 3. Set Up Remote Upstream
 
 ```bash
-git remote add upstream https://github.com/ORIGINAL_OWNER/au-glug-website.git
-# or if using GitLab
 git remote add upstream https://gitlab.com/ORIGINAL_OWNER/au-glug-website.git
 ```
 
@@ -83,7 +79,7 @@ npm run dev
 ## 🐛 Issue Contributions
 
 ### Find an Issue
-- Look through our [issues](https://github.com/ORGANIZATION/au-glug-website/issues) to find something that interests you
+- Look through our [issues](https://gitlab.com/ORGANIZATION/au-glug-website/issues) to find something that interests you
 - Comment on the issue to let others know you're working on it
 - If you find a bug, feel free to create a new issue
 
@@ -198,7 +194,7 @@ npm run preview
 
 ### Need Help?
 - Join our [WhatsApp Community](https://chat.whatsapp.com/IipGdNeCoy01MhQAO2he4b?mode=gi_t)
-- Check the [Issues](https://github.com/ORGANIZATION/au-glug-website/issues) for similar problems
+- Check the [Issues](https://gitlab.com/ORGANIZATION/au-glug-website/issues) for similar problems
 - Create a new issue if you can't find a solution
 
 ### Want to Discuss?

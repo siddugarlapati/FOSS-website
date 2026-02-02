@@ -10,12 +10,12 @@ const Team: React.FC = () => {
   const team = [
     { name: "Dharun", role: "Lead Coordinator", responsibility: "Oversees initiative, coordinates with authorities", cpu: "98.5" },
     { name: "Vighnesh", role: "Linux Evangelist", responsibility: "Promotes FOSS, organizes install fests", cpu: "95.2" },
-    { name: "Siddu", role: "Development Lead", responsibility: "Guides programming, Git/GitHub basics", cpu: "94.8" },
+    { name: "Siddu", role: "Development Lead", responsibility: "Guides programming, Git/GitLab basics", cpu: "94.8" },
     { name: "Akshita", role: "Workshops Lead", responsibility: "Plans hands-on workshops & sessions", cpu: "92.1" },
     { name: "Amulya", role: "Community Lead", responsibility: "Manages onboarding & mentorship", cpu: "91.5" },
     { name: "Kashatishka", role: "Content Lead", responsibility: "Maintains learning materials & docs", cpu: "89.4" },
     { name: "Kuldeep", role: "Events Lead", responsibility: "Organizes events & outreach", cpu: "88.7" },
-    { name: "Sloka", role: "Tools Lead", responsibility: "Manages GitHub & infrastructure", cpu: "87.9" }
+    { name: "Sloka", role: "Tools Lead", responsibility: "Manages GitLab & infrastructure", cpu: "87.9" }
   ];
 
   return (
