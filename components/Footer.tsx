@@ -9,8 +9,15 @@ const Footer: React.FC = () => {
     <footer className="bg-[#050505] border-t border-neutral-900 pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
         <div className="col-span-1 md:col-span-2">
-          <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center font-bold text-black text-xs">AU</div>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="relative">
+              <img
+                src="/images/auglug-logo.jpg"
+                alt="AUGLUG Penguin Mascot"
+                className="h-14 w-14 object-contain rounded-lg hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-400/10 via-purple-400/10 to-pink-400/10 blur-sm" />
+            </div>
             <span className="text-2xl font-bold text-white tracking-tighter">AUGLUG</span>
           </div>
           <p className="text-neutral-500 max-w-sm mb-8 leading-relaxed">

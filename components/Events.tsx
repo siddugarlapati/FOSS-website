@@ -10,19 +10,19 @@ const Events: React.FC = () => {
     target: containerRef,
     offset: ["start end", "end start"]
   });
-  
+
   // Timeline scroll effects
   const yTransform = useTransform(scrollYProgress, [0, 1], [50, -50]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  
+
   const handleEventClick = () => {
     window.location.href = "https://www.linkedin.com/posts/auglug_free-open-source-drive-au-glug-au-glug-activity-7423664526690267136-Nomy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFFpiMIB0j2KJEH8h3J38gRmHyeRGwTzymM";
   };
 
   return (
-    <Motion.section 
+    <Motion.section
       ref={containerRef}
-      id="events" 
+      id="events"
       className="py-32 px-6 relative bg-[#050505] min-h-screen"
       style={{
         y: yTransform,
@@ -94,7 +94,7 @@ const Events: React.FC = () => {
                   className="group cursor-pointer bg-neutral-900/50 border border-neutral-800 p-8 rounded-2xl hover:border-emerald-400/30 transition-all hover:bg-neutral-900 relative"
                 >
                   <div className="flex items-center gap-3 mb-4 text-xs font-mono font-bold">
-                    <span className="text-emerald-400">MAR 15-16</span>
+                    <span className="text-emerald-400">Feb 12 2026 </span>
                     <span className="w-1 h-1 rounded-full bg-neutral-700" />
                     <span className="text-emerald-400">UPCOMING</span>
                   </div>

@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Terminal, GitBranch, Menu, X } from 'lucide-react';
+import { GitBranch, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  
+
   const { scrollY } = useScroll();
-  
+
   // Optimized Apple-style navbar transforms (faster performance)
   const navbarY = useTransform(scrollY, [0, 100], [32, 20]);
   const navbarScale = useTransform(scrollY, [0, 100], [1, 0.97]);
   const navbarBg = useTransform(scrollY, [0, 50], ['rgba(0,0,0,0.7)', 'rgba(0,0,0,0.95)']);
   const navbarBlur = useTransform(scrollY, [0, 50], ['blur(10px)', 'blur(20px)']);
-  
+
   // Ultra-fast spring physics for snappy response
   const smoothNavbarY = useSpring(navbarY, { stiffness: 1200, damping: 100, mass: 0.8 });
   const smoothNavbarScale = useSpring(navbarScale, { stiffness: 1200, damping: 100, mass: 0.8 });
@@ -42,10 +42,14 @@ const Navbar: React.FC = () => {
   });
 
   const LogoIcon = () => (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center space-x-3">
       <div className="relative">
-        <Terminal className="text-yellow-400" size={24} />
-        <div className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+        <img
+          src="/images/auglug-logo.jpg"
+          alt="AUGLUG Penguin Mascot"
+          className="h-12 w-12 object-contain rounded-lg"
+        />
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-400/20 via-purple-400/20 to-pink-400/20 blur-sm animate-pulse pointer-events-none" />
       </div>
       <span className="font-bold text-white text-lg tracking-tight">AUGLUG</span>
     </div>
@@ -61,9 +65,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <motion.nav 
+    <motion.nav
       className="fixed left-0 right-0 z-50 flex justify-center pointer-events-none"
-      style={{ 
+      style={{
         top: smoothNavbarY,
         scale: smoothNavbarScale
       }}
@@ -100,12 +104,12 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
-                <span 
+                <span
                   className={`font-medium text-base tracking-wide block transition-all duration-200 ${hoveredItem === link.name ? 'text-yellow-400' : 'text-white'}`}
                 >
                   {link.name}
                 </span>
-                
+
                 {/* Enhanced glow effect */}
                 {hoveredItem === link.name && (
                   <motion.div
@@ -117,12 +121,12 @@ const Navbar: React.FC = () => {
                     transition={{ duration: 0.2 }}
                   />
                 )}
-                
+
                 {/* Pop-on underline indicator */}
                 <motion.div
                   className="absolute bottom-2 left-1/2 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full"
                   initial={{ width: 0, opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     width: hoveredItem === link.name ? '80%' : 0,
                     opacity: hoveredItem === link.name ? 1 : 0
                   }}
@@ -132,17 +136,31 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Center Logo - Enhanced Animation */}
-          <motion.div 
-            className="flex-shrink-0 mx-12 cursor-pointer transition-transform duration-300"
+          {/* Center Logo - Enhanced Animation with Better Highlighting */}
+          <motion.div
+            className="flex-shrink-0 mx-12 cursor-pointer group relative"
             onClick={() => handleNavigation('/')}
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.9 }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.25 }}
           >
-            <LogoIcon />
+            <div className="relative">
+              <LogoIcon />
+              {/* Enhanced glow on hover */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400 via-purple-400 to-pink-400 opacity-0 blur-xl group-hover:opacity-40 transition-all duration-300 -z-10"
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </div>
           </motion.div>
 
           {/* Right Navigation Items - Optimized for speed */}
@@ -160,12 +178,12 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.15 }}
               >
-                <span 
+                <span
                   className={`font-medium text-base tracking-wide block transition-all duration-200 ${hoveredItem === link.name ? 'text-yellow-400' : 'text-white'}`}
                 >
                   {link.name}
                 </span>
-                
+
                 {/* Enhanced glow effect */}
                 {hoveredItem === link.name && (
                   <motion.div
@@ -177,12 +195,12 @@ const Navbar: React.FC = () => {
                     transition={{ duration: 0.2 }}
                   />
                 )}
-                
+
                 {/* Pop-on underline indicator */}
                 <motion.div
                   className="absolute bottom-2 left-1/2 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full"
                   initial={{ width: 0, opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     width: hoveredItem === link.name ? '80%' : 0,
                     opacity: hoveredItem === link.name ? 1 : 0
                   }}
@@ -190,7 +208,7 @@ const Navbar: React.FC = () => {
                 />
               </motion.div>
             ))}
-            
+
             {/* GitLab Icon - Enhanced animation */}
             <motion.a
               href="https://gitlab.com/au-glug/au-glug-website"
@@ -213,8 +231,8 @@ const Navbar: React.FC = () => {
           <Link to="/" className="flex-shrink-0" onClick={() => setIsOpen(false)}>
             <LogoIcon />
           </Link>
-          
-          <motion.button 
+
+          <motion.button
             onClick={() => setIsOpen(!isOpen)}
             className="p-3 rounded-xl text-white transition-colors"
             whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
